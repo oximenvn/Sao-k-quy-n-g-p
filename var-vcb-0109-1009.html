@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check var ủng hộ MTTQ</title>
+    <h3>Check thong_tin_ung_ho_qua_tsk_vcb_0011001932418_tu_01_09_den10_09_2024.pdf</h3>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.6/css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/2.1.6/js/dataTables.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <table id="csvTable" class="display" style="width:100%"></table>
+
+    <script>
+                var isDataTableInitialized = false; // Biến cờ
+
+
+    Papa.parse("result-tcb-0109-1009.csv", {
+        download: true,
+        header: false,
+        complete: function(results) {
+            if (!isDataTableInitialized) { // Kiểm tra biến cờ
+                var table = $('#csvTable').DataTable({
+                    data: results.data,
+                    columns: [
+                            { title: 'ngay' },
+                            { title: 'tien_ra' },
+                            { title: 'tien_vao' },
+                            { title: 'so_du' },
+                            { title: 'noi_dung' }
+                        ],
+                });
+                isDataTableInitialized = true; // Đặt biến cờ thành true
+            }
+        }
+    });
+
+ 
+    </script>
+
+</body>
+</html>
